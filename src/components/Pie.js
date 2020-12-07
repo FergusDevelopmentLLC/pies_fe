@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Pie = ({
-  pieceTitles = ['Piece00','Piece01','Piece02','Piece03','Piece04','Piece05','Piece06','Piece07'],
-  chunks = [10,20,30,40,50,60,70,11,21,31,41,51,61,71,12,22,32,42,52,62,72,13,23,33,43,53,63,73,14,24,34,44,54,64,74,15,25,35,45,55,65,75,16,26,36,46,56,66,76,17,27,37,47,57,67,77]
+  pieceTitles = [],
+  chunks = []
 }) => {
 
     const fillChunk = (id) => chunks.includes(id) ? true : false
@@ -98,7 +98,7 @@ const Pie = ({
         <text><tspan x="270" y="75"  className="label left"  >{ pieceTitles[7] }</tspan></text>
       
       </svg>
-  )
+    ) 
 }
 
 Pie.propTypes = {
