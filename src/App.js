@@ -1,6 +1,8 @@
-function App() {
+import PieContainer from "./containers/PieContainer";
+
+const App = () => {
   return (
-    <div>App</div>
-  );
+    <PieContainer />
+  )
 }
 export default App;
