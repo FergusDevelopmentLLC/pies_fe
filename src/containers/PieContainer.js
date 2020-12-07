@@ -9,7 +9,7 @@ function PieContainer(props) {
 }
 
 PieContainer.propTypes = {
-
+  id: PropTypes.number.isRequired
 }
 
 export default PieContainer
