@@ -16,19 +16,29 @@ const PieContainer = ({
     fetchPie(id)
   }, [id, fetchPie, updatePie])
 
+  const getButtons = () => {
+    if(pie.pieces) {
+      return pie.pieces.map((piece, index) => {
+        return <div key={index}><button onClick={()=> {
+          const array = [parseInt(1 + index.toString()), parseInt(2 + index.toString()), parseInt(3 + index.toString()), parseInt(4 + index.toString()), parseInt(5 + index.toString()), parseInt(6 + index.toString()), parseInt(7 + index.toString())]
+          for (let chunk of array) {
+            if(!pie.chunks.includes(chunk)) {
+              updatePie({
+                ...pie,
+                chunks: [...pie.chunks, chunk]
+              })
+              break
+            }
+          }
+        }}>Add { piece }</button></div>
+      })
+    }
+  }
+
   return (
     <div>
       <Pie pieces={ pie.pieces } chunks={ pie.chunks } title={ pie.title } />
-      <div>
-        <button onClick={()=> {
-          updatePie({
-            id: id,
-            title: 'Success Pie',
-            pieces: ['Piece00', 'Piece01', 'Piece02', 'Piece03', 'Piece04', 'Piece05', 'Piece06', 'Piece07'],
-            chunks: [10, 11, 12]
-          })
-        }}>Update</button>
-      </div>
+      { getButtons() }
     </div>
   )
 }
