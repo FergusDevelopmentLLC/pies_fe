@@ -10,7 +10,7 @@ const Pie = ({
     const fillChunk = (id) => chunks.includes(id) ? true : false
     
     return (
-      <svg width="600" height="600" viewBox="0 0 600 600" id="pie">
+      <svg viewBox="0 0 600 600" id="pie">
       
         <g transform="translate(0,300)">
     

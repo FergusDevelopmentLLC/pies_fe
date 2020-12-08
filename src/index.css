@@ -63,3 +63,21 @@ body {
 .middle {
    text-anchor: middle
 }
+
+.pie-form {
+   display: flex;
+   flex-direction: column;
+   width: 20rem;
+}
+
+.pie-form [type=text] {
+   margin: 0 0 .5rem 0;   
+}
+
+.pie-form [type=submit] {
+   margin: 0 auto 0 0;
+}
+
+.pie-gallery {
+   display: flex;
+}

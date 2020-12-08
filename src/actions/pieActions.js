@@ -1,4 +1,4 @@
-import { CREATE_PIE, FETCH_PIE, UPDATE_PIE } from './types'
+import { CREATE_PIE, FETCH_PIE, UPDATE_PIE, FETCH_PIES } from './types'
 import { URL_PREFIX } from './urlPrefix'
 
 export const createPie = (pie, history) => dispatch => {
@@ -16,26 +16,15 @@ export const createPie = (pie, history) => dispatch => {
         type: CREATE_PIE,
         payload: pie
       })
-      console.log('pie saved')
-      //history.push('/participation')
+      console.log('saved pie', pie)
+      history.push('/pies')
     })
   
 }
 
 export const fetchPie = (id) => dispatch => {
-
-  // const fakePie = {
-  //   title: 'Fake Pie',
-  //   pieceTitles: ['Piece00','Piece01','Piece02','Piece03','Piece04','Piece05','Piece06','Piece07'],
-  //   chunks: [10,20,30,40,50,60,70,11,21,31,41,51,61,71,12,22,32,42,52,62,72,13,23,33,43,53,63,73,14,24,34,44,54,64,74,15,25,35,45,55,65,75,16,26,36,46,56,66,76,17,27,37,47,57,67,77]
-  // }
-
-  // dispatch({
-  //   type: FETCH_PIE,
-  //   payload: fakePie
-  // })
-
   const apiUrl = `${ URL_PREFIX }/pies/${id}`
+
   fetch(apiUrl, null)
     .then(res => res.json())
     .then((pie) => {
@@ -65,8 +54,22 @@ export const updatePie = (pie, history) => dispatch => {
         type: UPDATE_PIE,
         payload: savedPie
       })
-
       console.log('savedPie', savedPie)
-      // history.push(`/results/${ savedTestResult.economic }/${ savedTestResult.diplomatic }/${ savedTestResult.civil }/${ savedTestResult.societal }`)
+    })
+}
+
+export const fetchPies = () => dispatch => {
+
+  let apiUrl = `${ URL_PREFIX }/pies`
+  
+  fetch(`${apiUrl}`, null)
+    .then(res => res.json())
+    .then((pies) => {
+      
+      dispatch({
+        type: FETCH_PIES,
+        payload: pies
+      })
+
     })
 }

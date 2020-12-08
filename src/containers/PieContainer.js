@@ -44,13 +44,13 @@ const PieContainer = ({
 }
 
 PieContainer.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  fetchPie: PropTypes.func.isRequired,
+  updatePie: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
   return {
-    fetchPie: PropTypes.func.isRequired,
-    updatePie: PropTypes.func.isRequired,
     pie: state.pieReducer.pie
   }
 }
