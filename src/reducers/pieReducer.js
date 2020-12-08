@@ -11,6 +11,11 @@ export default (state = initialState, action) => {
         ...state,
         pie: action.payload
       };
+    case UPDATE_PIE:
+      return {
+        ...state,
+        pie: action.payload
+      };
     default:
       return state
   }
