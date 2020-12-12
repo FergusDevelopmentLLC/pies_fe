@@ -3,7 +3,7 @@ import { Provider } from "react-redux"
 import PieContainer from "./containers/PieContainer"
 import PieForm from "./components/PieForm"
 import store from "./store"
-import PieGalleryContainer from "./containers/PieGalleryContainer"
+import PieGalleryContainer from "./components/PieGalleryContainer"
 
 const App = () => {
   return (
