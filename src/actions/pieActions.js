@@ -1,6 +1,6 @@
 import { CREATE_PIE, FETCH_PIE, UPDATE_PIE } from './types'
 import { URL_PREFIX } from './urlPrefix'
-//import { refreshUser } from '../actions/userActions'
+import { refreshUser } from '../actions/userActions'
 
 export const createPie = (pie, user, history) => {
 
@@ -19,7 +19,7 @@ export const createPie = (pie, user, history) => {
           payload: pie
         })
       }).then(() => {
-        //return dispatch(refreshUser(user))
+        return dispatch(refreshUser(user))
       }).then(() => {
         history.push('/pies')
       })
@@ -62,7 +62,7 @@ export const updatePie = (pie, user) => {
           payload: savedPie
         })
       }).then(() => {
-        //return dispatch(refreshUser(user))
+        return dispatch(refreshUser(user))
       })
   }
 
