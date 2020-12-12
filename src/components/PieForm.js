@@ -1,13 +1,13 @@
 import React, { useState } from "react"
-
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { createPie } from '../actions/pieActions'
+import { useHistory } from "react-router"
+import { useSelector, useDispatch } from 'react-redux'
 
-export const PieForm = ({
-  createPie,
-  history
-}) => {
+export const PieForm = () => {
+
+  const user = useSelector(state => state.authenticationReducer.user)
+  const dispatch = useDispatch()
+  const history = useHistory()
 
   const [pie, setPie] = useState({
     title: '',
@@ -30,6 +30,7 @@ export const PieForm = ({
     })
   }
 
+  //TODO: where to put this?
   String.prototype.isEmpty = function() {
     return (this.length === 0 || !this.trim())
   }
@@ -37,7 +38,7 @@ export const PieForm = ({
   return (
     <div>
       <h1>Create Pie</h1>
-      <form className='pie-form'>
+      <form className='form'>
         <label htmlFor='title'>Title</label>
         <input type='text' name='title' value={ pie.title } onChange={ setTitle } />
 
@@ -71,7 +72,8 @@ export const PieForm = ({
             alert('All fields are required')
           }
           else {
-            createPie(pie, history)
+            pie.user_id = user.id
+            dispatch(createPie(pie, user, history))
           }
         }} />
       </form>
@@ -79,8 +81,4 @@ export const PieForm = ({
   )
 }
 
-PieForm.propTypes = {
-  createPie: PropTypes.func.isRequired
-}
-
-export default connect(null, { createPie })(PieForm)
+export default PieForm
