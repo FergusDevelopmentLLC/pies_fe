@@ -1,18 +1,33 @@
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom"
 import { Provider } from "react-redux"
-import PieContainer from "./containers/PieContainer"
-import PieForm from "./components/PieForm"
 import store from "./store"
+import Navigation from './components/Navigation'
+import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
+import PieForm from "./components/PieForm"
 import PieGalleryContainer from "./components/PieGalleryContainer"
+import PrivateRoute from './components/PrivateRoute'
+import PieController from './components/PieController'
 
 const App = () => {
+
+  //https://stackoverflow.com/questions/49186183/reactjs-privateroute-that-accesses-url-parameter
+  const PieControllerWrapper = props => {
+    if(props.match.params.id) return <PieController {...{...props, id: parseInt(props.match.params.id)}} />
+    return null
+  }
+
   return (
     <Provider store={ store }>
       <Router>
+        <Navigation />
         <Switch>
-          <Route path="/pies" exact render={(props) => (<PieGalleryContainer {...props} />)} />
-          <Route path="/pies/new" exact render={(props) => (<PieForm {...props} />)} />
-          <Route path="/pies/:id" exact render={(props) => (<PieContainer {...props} id={ parseInt(props.match.params.id) }/>)} />
+          <Route exact path="/" component={ LoginForm } />
+          <Route exact path="/login" component={ LoginForm } />
+          <Route exact path="/signup" component={ SignupForm } />
+          <PrivateRoute exact path="/pies" component={ PieGalleryContainer } />
+          <PrivateRoute exact path="/pies/new" component={ PieForm } />
+          <PrivateRoute exact path="/pies/:id" component={ PieControllerWrapper } />
         </Switch>
       </Router>
     </Provider>
