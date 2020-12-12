@@ -11,9 +11,9 @@ export const PieForm = () => {
 
   const [pie, setPie] = useState({
     title: '',
-    pieces: ['', '', '', '', '', '', '', '']
+    pieces: ['Goal 1', 'Goal 2', 'Goal 3', 'Goal 4', 'Goal 5', 'Goal 6', 'Goal 7', 'Goal 8']
   })
-  
+
   const setTitle = (event) => {
     setPie({
       ...pie,
@@ -43,28 +43,28 @@ export const PieForm = () => {
         <input type='text' name='title' value={ pie.title } onChange={ setTitle } />
 
         <label htmlFor='piece00'>Piece</label>
-        <input type='text' name='piece00' id={0} value={ pie.piece00 } onChange={ setPiece } />
+        <input type='text' name='piece00' id={0} defaultValue={ pie.pieces[0] } onChange={ setPiece } />
 
         <label htmlFor='piece01'>Piece</label>
-        <input type='text' name='piece01' id={1} value={ pie.piece01 } onChange={ setPiece }/>
+        <input type='text' name='piece01' id={1} defaultValue={ pie.pieces[1] } onChange={ setPiece }/>
 
         <label htmlFor='piece02'>Piece</label>
-        <input type='text' name='piece02' id={2} value={ pie.piece02 } onChange={ setPiece }/>
+        <input type='text' name='piece02' id={2} defaultValue={ pie.pieces[2] } onChange={ setPiece }/>
 
         <label htmlFor='piece03'>Piece</label>
-        <input type='text' name='piece03' id={3} value={ pie.piece03 } onChange={ setPiece }/>
+        <input type='text' name='piece03' id={3} defaultValue={ pie.pieces[3] } onChange={ setPiece }/>
 
         <label htmlFor='piece04'>Piece</label>
-        <input type='text' name='piece04' id={4} value={ pie.piece04 } onChange={ setPiece }/>
+        <input type='text' name='piece04' id={4} defaultValue={ pie.pieces[4] } onChange={ setPiece }/>
 
         <label htmlFor='piece05'>Piece</label>
-        <input type='text' name='piece05' id={5} value={ pie.piece05 } onChange={ setPiece }/>
+        <input type='text' name='piece05' id={5} defaultValue={ pie.pieces[5] } onChange={ setPiece }/>
         
         <label htmlFor='piece06'>Piece</label>
-        <input type='text' name='piece06' id={6} value={ pie.piece06 } onChange={ setPiece }/>
+        <input type='text' name='piece06' id={6} defaultValue={ pie.pieces[6] } onChange={ setPiece }/>
 
         <label htmlFor='piece07'>Piece</label>
-        <input type='text' name='piece07' id={7} value={ pie.piece07 } onChange={ setPiece }/>
+        <input type='text' name='piece07' id={7} defaultValue={ pie.pieces[7] } onChange={ setPiece }/>
 
         <input type='submit' value="Save" onClick={(event) => {
           event.preventDefault()
