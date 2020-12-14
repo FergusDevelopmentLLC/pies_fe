@@ -30,12 +30,14 @@ export const login = (email, password, history) => {
           })
         }
         else {
-          dispatch({
+          return dispatch({
             type: LOGIN_SUCCESS,
             payload: response.user
           })
-          history.push('/pies', null)
         }
+      })
+      .then(() => {
+        history.push('/pies', null)
       })
       .catch((error) => {
         dispatch({ 

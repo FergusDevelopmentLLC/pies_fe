@@ -2,7 +2,9 @@ import {
           CREATE_PIE_REQUEST,
           CREATE_PIE_SUCCESS,
           CREATE_PIE_FAILURE,
-          FETCH_PIE, 
+          FETCH_PIE_REQUEST, 
+          FETCH_PIE_SUCCESS, 
+          FETCH_PIE_FAILURE, 
           UPDATE_PIE, 
           DELETE_PIE_REQUEST,
           DELETE_PIE_SUCCESS,
@@ -16,15 +18,27 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case FETCH_PIE:
-      return {
-        ...state,
-        pie: action.payload
-      }
     case UPDATE_PIE:
       return {
         ...state,
         pie: action.payload
+      }
+    case FETCH_PIE_REQUEST:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case FETCH_PIE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        pie: action.payload
+      }
+    case FETCH_PIE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
       }
     case CREATE_PIE_REQUEST:
       return {
