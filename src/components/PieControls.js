@@ -1,14 +1,11 @@
 import React from 'react'
 import { updatePie } from '../actions/pieActions'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-const PieControls = ({
-  pieData = {
-    pieces: [],
-    chunks: []
-  }
-}) => {
-  const user = useSelector(state => state.authenticationReducer.user)
+const PieControls = (props) => {
+  
+  const pieData = props.pieData
+
   const dispatch = useDispatch()
   
   const addChunk = (index) => {
@@ -32,6 +29,7 @@ const PieControls = ({
           ...pieData,
           chunks: pieData.chunks.filter((c) => c !== chunk)
         }))
+
         break
       }
     }
