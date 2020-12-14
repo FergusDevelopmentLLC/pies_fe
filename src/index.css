@@ -148,3 +148,12 @@ nav div a {
    color: red;
    margin: 0 0 .5rem 0;
 }
+
+.delete-pie-wrapper {
+   display: flex;
+   margin-top: 2rem;
+}
+
+.delete-pie-wrapper button {
+   margin: auto;
+}
