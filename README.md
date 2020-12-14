@@ -25,7 +25,7 @@ https://will-carter.medium.com/reacting-redoing-learning-a643cf0a9966
 https://www.youtube.com/watch?v=WF6tlrrE7-c
 
 ## Code sample video  
-https://www.youtube.com/watch?v=JGXr2y-BX8Y
+https://youtu.be/bH7l_XLEQmA
 
 ## Contributing Bugfixes or Features
 
