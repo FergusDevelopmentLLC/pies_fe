@@ -7,12 +7,12 @@ const Profile = (props) => {
   
   return (
     <>
-    <h1>User profile</h1>
+    <h1>Profile</h1>
     <div>
       First name: { user.first_name }<br/>
       Last name: { user.last_name }<br/>
       Email: { user.email }<br/>
-      Number of pies: { user.pies.length }
+      Number of pies created: { user.pies.length }
     </div>
     </>
   )
