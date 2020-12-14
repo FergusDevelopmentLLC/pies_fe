@@ -2,10 +2,12 @@ import {
   CREATE_PIE_REQUEST,
   CREATE_PIE_SUCCESS,
   CREATE_PIE_FAILURE,
-  FETCH_PIE_REQUEST,
-  FETCH_PIE_SUCCESS,
-  FETCH_PIE_FAILURE,
-  UPDATE_PIE,
+  FETCH_PIE_REQUEST, 
+  FETCH_PIE_SUCCESS, 
+  FETCH_PIE_FAILURE, 
+  UPDATE_PIE_REQUEST, 
+  UPDATE_PIE_SUCCESS, 
+  UPDATE_PIE_FAILURE, 
   DELETE_PIE_REQUEST,
   DELETE_PIE_SUCCESS,
   DELETE_PIE_FAILURE
@@ -81,26 +83,35 @@ export const fetchPie = (id) => {
 export const updatePie = (pie, user) => {
 
   return dispatch => {
+    
+    dispatch({ type: UPDATE_PIE_REQUEST })
+
     const options = {
       method: 'PATCH',
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify( { pie: pie } )
     }
   
-    let apiUrl = `${ URL_PREFIX }/pies/${pie.id}`
-    
-    fetch(`${apiUrl}`, options)
-      .then(res => res.json())
-      .then((savedPie) => {
+    fetch(`${ URL_PREFIX }/pies/${pie.id}`, options)
+      .then(res => {
+        if(res.ok) return res.json()
+        else return Promise.reject(res.statusText)
+      })
+      .then((pie) => {
         return dispatch({
-          type: UPDATE_PIE,
-          payload: savedPie
+          type: UPDATE_PIE_SUCCESS,
+          payload: pie
         })
       }).then(() => {
         return dispatch(refreshUser(user))
       })
+      .catch((error) => {
+        return dispatch({
+          type: UPDATE_PIE_FAILURE,
+          payload: error
+        })
+      })
   }
-
 }
 
 export const deletePie = (pie, user, history) => {
