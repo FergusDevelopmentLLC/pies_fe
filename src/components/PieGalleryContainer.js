@@ -17,6 +17,7 @@ export const PieGalleryContainer = () => {
   return (
     <>
     <h1>My Pies</h1>
+    { pies.length > 0 ? null : 'No pies yet. Click New Pie to create a pie.'}
     <PieGallery pies={pies} />
     </>
   )
