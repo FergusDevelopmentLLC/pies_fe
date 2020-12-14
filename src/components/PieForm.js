@@ -35,6 +35,17 @@ export const PieForm = () => {
     return (this.length === 0 || !this.trim())
   }
 
+  const savePie = (event) => {
+    event.preventDefault()
+    if(pie.title.isEmpty() || pie.pieces[0].isEmpty() || pie.pieces[1].isEmpty() || pie.pieces[2].isEmpty() || pie.pieces[3].isEmpty() || pie.pieces[4].isEmpty() || pie.pieces[5].isEmpty() || pie.pieces[6].isEmpty() || pie.pieces[7].isEmpty()) {
+      alert('All fields are required')
+    }
+    else {
+      pie.user_id = user.id
+      dispatch(createPie(pie, history))
+    }
+  }
+
   return (
     <div>
       <h1>New Pie</h1>
@@ -66,16 +77,7 @@ export const PieForm = () => {
         <label htmlFor='piece07'>Piece</label>
         <input type='text' name='piece07' id={7} defaultValue={ pie.pieces[7] } onChange={ setPiece }/>
 
-        <input type='submit' value="Save" onClick={(event) => {
-          event.preventDefault()
-          if(pie.title.isEmpty() || pie.pieces[0].isEmpty() || pie.pieces[1].isEmpty() || pie.pieces[2].isEmpty() || pie.pieces[3].isEmpty() || pie.pieces[4].isEmpty() || pie.pieces[5].isEmpty() || pie.pieces[6].isEmpty() || pie.pieces[7].isEmpty()) {
-            alert('All fields are required')
-          }
-          else {
-            pie.user_id = user.id
-            dispatch(createPie(pie, user, history))
-          }
-        }} />
+        <input type='submit' value="Save" onClick={ savePie } />
       </form>
     </div>
   )
