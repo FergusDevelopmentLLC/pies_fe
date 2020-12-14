@@ -8,6 +8,7 @@ import PieForm from "./components/PieForm"
 import PieGalleryContainer from "./components/PieGalleryContainer"
 import PrivateRoute from './components/PrivateRoute'
 import PieController from './components/PieController'
+import ProfileContainer from './components/ProfileContainer'
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/" component={ LoginForm } />
           <Route exact path="/login" component={ LoginForm } />
           <Route exact path="/signup" component={ SignupForm } />
+          <PrivateRoute exact path="/profile" component={ ProfileContainer } />
           <PrivateRoute exact path="/pies" component={ PieGalleryContainer } />
           <PrivateRoute exact path="/pies/new" component={ PieForm } />
           <PrivateRoute exact path="/pies/:id" component={ PieControllerWrapper } />

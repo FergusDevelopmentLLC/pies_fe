@@ -157,3 +157,7 @@ nav div a {
 .delete-pie-wrapper button {
    margin: auto;
 }
+
+.profile-link {
+   text-decoration: underline;
+}

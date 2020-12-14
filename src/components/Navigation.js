@@ -30,9 +30,9 @@ const Navigation = () => {
   }
 
   const getWelcome = () => {
-    if(loggedIn) {
+    if(loggedIn && user) {
       return (
-        <div className="logged-in-name">Welcome, { user ? user.first_name : ''}</div>
+        <div className="logged-in-name">Welcome, <Link to={"/profile"} className="profile-link">{ user.first_name }</Link></div>
       )
     }
     else {
