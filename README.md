@@ -18,16 +18,14 @@ This is the back end for this application: https://github.com/FergusDevelopmentL
 
 ## Blog post
 
-Blog post that details a build of a Ruby on Rails API and a React/Redux front end that is informed by this project  
+Blog post that details a build of a Ruby on Rails API and a React/Redux front end that is informed by this project.
 https://will-carter.medium.com/reacting-redoing-learning-a643cf0a9966
 
-## Video walkthrough
+## Video walkthrough  
+https://www.youtube.com/watch?v=WF6tlrrE7-c
 
-https://www.youtube.com/watch?v=2fK7-zI9Kzc
-
-## Code sample video
-
-https://www.youtube.com/watch?v=C-d2N8V-Zps
+## Code sample video  
+https://www.youtube.com/watch?v=JGXr2y-BX8Y
 
 ## Contributing Bugfixes or Features
 
