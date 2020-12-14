@@ -7,7 +7,10 @@ export const PieGalleryContainer = () => {
   const pies = useSelector(state => state.authenticationReducer.user.pies)
 
   return (
+    <>
+    <h1>My Pies</h1>
     <PieGallery pies={pies} />
+    </>
   )
 }
 

@@ -37,7 +37,7 @@ export const PieForm = () => {
 
   return (
     <div>
-      <h1>Create Pie</h1>
+      <h1>New Pie</h1>
       <form className='form'>
         <label htmlFor='title'>Title</label>
         <input type='text' name='title' value={ pie.title } onChange={ setTitle } />

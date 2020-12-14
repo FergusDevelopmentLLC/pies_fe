@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import Pie from './Pie'
 import { Link } from 'react-router-dom'
 
-const PieGallery = ({
-  pies = []
-}) => {
+const PieGallery = (props) => {
+  
+  const pies = props.pies
+  
   return (
     <>
     <div className="pie-gallery">
