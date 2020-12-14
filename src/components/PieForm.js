@@ -42,7 +42,8 @@ export const PieForm = () => {
     }
     else {
       pie.user_id = user.id
-      dispatch(createPie(pie, history))
+      dispatch(createPie(pie))
+      history.push('/pies')
     }
   }
 

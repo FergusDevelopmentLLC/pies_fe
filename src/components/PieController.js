@@ -10,7 +10,6 @@ import { useHistory } from "react-router"
 const PieController = (props) => {
 
   const pie = useSelector(state => state.pieReducer.pie)
-  const user = useSelector(state => state.authenticationReducer.user)
   const dispatch = useDispatch()
   const history = useHistory()
   
@@ -26,7 +25,8 @@ const PieController = (props) => {
       { getPie() }
       { getPieControls() }
       <div className="delete-pie-wrapper"><button onClick={ () => {
-        dispatch(deletePie(pie, user, history))
+        dispatch(deletePie(pie))
+        history.push("/pies")
       } }>Delete Pie</button></div>
       
     </div>

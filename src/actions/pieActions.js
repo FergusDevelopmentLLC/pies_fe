@@ -14,9 +14,8 @@ import {
 } from './types'
 
 import { URL_PREFIX } from './urlPrefix'
-import { refreshUser } from '../actions/userActions'
 
-export const createPie = (pie, history) => {
+export const createPie = (pie) => {
 
   return dispatch => {
 
@@ -38,9 +37,6 @@ export const createPie = (pie, history) => {
           type: CREATE_PIE_SUCCESS,
           payload: pie
         })
-      })
-      .then(() => {
-        history.push("/pies")
       })
       .catch((error) => {
         return dispatch({
@@ -77,6 +73,7 @@ export const fetchPie = (id) => {
   }
 }
 
+  
 export const updatePie = (pie) => {
 
   return dispatch => {
@@ -109,7 +106,7 @@ export const updatePie = (pie) => {
   }
 }
 
-export const deletePie = (pie, history) => {
+export const deletePie = (pie) => {
 
   return dispatch => {
 
@@ -127,9 +124,7 @@ export const deletePie = (pie, history) => {
       .then(() => {
         return dispatch({ type: DELETE_PIE_SUCCESS })
       })
-      .then(() => {
-        history.push('/pies')
-      }).catch((error) => {
+      .catch((error) => {
         return dispatch({
           type: DELETE_PIE_FAILURE,
           payload: error

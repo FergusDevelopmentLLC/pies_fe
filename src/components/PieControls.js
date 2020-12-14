@@ -10,7 +10,7 @@ const PieControls = ({
 }) => {
   const user = useSelector(state => state.authenticationReducer.user)
   const dispatch = useDispatch()
-
+  
   const addChunk = (index) => {
     const piece = [parseInt(1 + index.toString()), parseInt(2 + index.toString()), parseInt(3 + index.toString()), parseInt(4 + index.toString()), parseInt(5 + index.toString()), parseInt(6 + index.toString()), parseInt(7 + index.toString())]
     for (let chunk of piece) {
@@ -18,7 +18,7 @@ const PieControls = ({
         dispatch(updatePie({
           ...pieData,
           chunks: [...pieData.chunks, chunk]
-        }, user))
+        }))
         break
       }
     }
@@ -31,7 +31,7 @@ const PieControls = ({
         dispatch(updatePie({
           ...pieData,
           chunks: pieData.chunks.filter((c) => c !== chunk)
-        }, user))
+        }))
         break
       }
     }
