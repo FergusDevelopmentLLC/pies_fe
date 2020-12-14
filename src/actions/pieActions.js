@@ -1,5 +1,7 @@
 import { 
-  CREATE_PIE,
+  CREATE_PIE_REQUEST,
+  CREATE_PIE_SUCCESS,
+  CREATE_PIE_FAILURE,
   FETCH_PIE,
   UPDATE_PIE,
   DELETE_PIE_REQUEST,
@@ -14,28 +16,38 @@ export const createPie = (pie, user, history) => {
   
   return dispatch => {
 
-    //dispatch({ type: CREATE_PIE_REQUEST })
-
+    dispatch({ type: CREATE_PIE_REQUEST })
+  
     const options = {
       method: 'POST',
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify( { pie: pie } )
     }
-  
+
     fetch(`${ URL_PREFIX }/pies`, options)
-      .then(res => res.json())
+      .then(res => {
+        if(res.ok) return res.json()
+        else return Promise.reject(res.statusText)
+      })
       .then((pie) => {
         return dispatch({
-          type: CREATE_PIE,
+          type: CREATE_PIE_SUCCESS,
           payload: pie
         })
-      }).then(() => {
+      })
+      .then(() => {
         return dispatch(refreshUser(user))
-      }).then(() => {
+      })
+      .then(() => {
         history.push('/pies')
       })
+      .catch((error) => {
+        return dispatch({
+          type: CREATE_PIE_FAILURE,
+          payload: error
+        })
+      })
   }
-  
 }
 
 export const fetchPie = (id) => {
@@ -56,6 +68,8 @@ export const fetchPie = (id) => {
 
 export const updatePie = (pie, user) => {
 
+  
+  
   return dispatch => {
     const options = {
       method: 'PATCH',
@@ -107,6 +121,5 @@ export const deletePie = (pie, user, history) => {
         })
       })
   }
-  
-  
+
 }

@@ -1,10 +1,13 @@
-import {  CREATE_PIE,
+import {  
+          CREATE_PIE_REQUEST,
+          CREATE_PIE_SUCCESS,
+          CREATE_PIE_FAILURE,
           FETCH_PIE, 
           UPDATE_PIE, 
           DELETE_PIE_REQUEST,
           DELETE_PIE_SUCCESS,
           DELETE_PIE_FAILURE
-        } from "../actions/types";
+      } from "../actions/types";
 
 const initialState = {
   pie: {},
@@ -23,10 +26,22 @@ export default (state = initialState, action) => {
         ...state,
         pie: action.payload
       }
-    case CREATE_PIE:
+    case CREATE_PIE_REQUEST:
       return {
         ...state,
+        isLoading: true
+      }
+    case CREATE_PIE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
         pie: action.payload
+      }
+    case CREATE_PIE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
       }
     case DELETE_PIE_REQUEST:
       return {
