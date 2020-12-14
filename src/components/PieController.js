@@ -5,12 +5,9 @@ import PieControls from './PieControls'
 import { fetchPie } from '../actions/pieActions'
 import { deletePie } from '../actions/pieActions'
 import { useSelector, useDispatch} from 'react-redux'
-import { Link } from 'react-router-dom'
 import { useHistory } from "react-router"
 
-const PieController = ({
-  id = 0
-}) => {
+const PieController = (props) => {
 
   const pie = useSelector(state => state.pieReducer.pie)
   const user = useSelector(state => state.authenticationReducer.user)
@@ -21,7 +18,7 @@ const PieController = ({
   const getPieControls = () => Object.keys(pie).length > 0 ? <PieControls pieData={ pie } /> : null
 
   useEffect(() => {
-    dispatch(fetchPie(id))
+    dispatch(fetchPie(props.id))
   }, [])
   
   return (
