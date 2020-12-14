@@ -3,7 +3,6 @@ import PieGallery from './PieGallery'
 import { useSelector, useDispatch } from "react-redux"
 import { refreshUser } from '../actions/userActions'
 
-
 export const PieGalleryContainer = () => {
 
   const user = useSelector(state => state.authenticationReducer.user)
