@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import {ThemeContext} from "../themeContext"
 
 const Pie = ({
   pieData = {
@@ -10,6 +11,7 @@ const Pie = ({
 }) => {
 
     const fillChunk = (id) => pieData.chunks.includes(id) ? true : false
+    const {theme, toggleTheme} = useContext(ThemeContext)
     
     return (
       <svg viewBox="0 0 600 600">
@@ -101,6 +103,8 @@ const Pie = ({
         <text><tspan x="130" y="440" className="label left"  >{ pieData.pieces[5] }</tspan></text>
         <text><tspan x="120" y="175" className="label left"  >{ pieData.pieces[6] }</tspan></text>
         <text><tspan x="270" y="75"  className="label left"  >{ pieData.pieces[7] }</tspan></text>
+
+        <text><tspan x="20" y="20"  className="label right"  >{ theme }</tspan></text>
       
       </svg>
     ) 

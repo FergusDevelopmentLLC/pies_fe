@@ -11,7 +11,7 @@ export const LoginForm = () => {
   const history = useHistory()
   const errorMessage = useSelector(state => state.authenticationReducer.errorMessage)
   const dispatch = useDispatch()
-
+  
   useEffect(() => {
     setLoginButtonDisabled(!(email && password))
   }, [email, password])
