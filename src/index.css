@@ -161,3 +161,11 @@ nav div a {
 .profile-link {
    text-decoration: underline;
 }
+
+.chunk-wrapper {
+   /* border: 1px solid red; */
+}
+
+.chunk-wrapper button {
+   width: 7rem;
+}

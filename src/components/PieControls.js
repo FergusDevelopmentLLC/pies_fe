@@ -40,7 +40,7 @@ const PieControls = (props) => {
       return pieData.pieces.map((piece, index) => {
         return  <div key={index} className='pie-controls-container'>
                   <h4>{ piece }</h4>
-                  <div><button onClick={() => addChunk(index) }>Add chunk</button> <button onClick={() => removeChunk(index) }>Remove chunk</button></div>
+                  <div className="chunk-wrapper"><button onClick={() => addChunk(index) }>Add chunk</button> <button onClick={() => removeChunk(index) }>Remove chunk</button></div>
                 </div>
       })
     }
