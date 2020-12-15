@@ -12,7 +12,9 @@ const App = () => {
 
   //https://stackoverflow.com/questions/49186183/reactjs-privateroute-that-accesses-url-parameter
   const PieControllerWrapper = props => {
-    if(props.match.params.id) return <PieController {...{...props, id: parseInt(props.match.params.id)}} />
+    if(props.match.params.id) {
+      return <PieController id={ parseInt(props.match.params.id) } />
+    }
     return null
   }
 

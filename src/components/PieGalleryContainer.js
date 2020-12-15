@@ -12,7 +12,7 @@ export class PieGalleryContainer extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.refreshUser(this.props.user)
   }
 
