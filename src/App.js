@@ -1,6 +1,4 @@
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom"
-import { Provider } from "react-redux"
-import store from "./store"
 import Navigation from './components/Navigation'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
@@ -19,20 +17,20 @@ const App = () => {
   }
 
   return (
-    <Provider store={ store }>
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route exact path="/" component={ LoginForm } />
-          <Route exact path="/login" component={ LoginForm } />
-          <Route exact path="/signup" component={ SignupForm } />
-          <PrivateRoute exact path="/profile" component={ ProfileContainer } />
-          <PrivateRoute exact path="/pies" component={ PieGalleryContainer } />
-          <PrivateRoute exact path="/pies/new" component={ PieForm } />
-          <PrivateRoute exact path="/pies/:id" component={ PieControllerWrapper } />
-        </Switch>
-      </Router>
-    </Provider>
+    
+    <Router>
+      <Navigation />
+      <Switch>
+        <Route exact path="/" component={ LoginForm } />
+        <Route exact path="/login" component={ LoginForm } />
+        <Route exact path="/signup" component={ SignupForm } />
+        <PrivateRoute exact path="/profile" component={ ProfileContainer } />
+        <PrivateRoute exact path="/pies" component={ PieGalleryContainer } />
+        <PrivateRoute exact path="/pies/new" component={ PieForm } />
+        <PrivateRoute exact path="/pies/:id" component={ PieControllerWrapper } />
+      </Switch>
+    </Router>
+    
   )
 }
 export default App;
