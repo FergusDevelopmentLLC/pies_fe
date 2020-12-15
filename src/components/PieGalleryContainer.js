@@ -34,6 +34,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { refreshUser })(PieGalleryContainer)
 
+
 // function component version
 // React Hook useEffect has a missing dependency: 'user'. Either include it or remove the dependency array
 
