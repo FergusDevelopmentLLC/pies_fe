@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { login } from '../actions/userActions'
-import { useHistory } from "react-router"
 import { useSelector, useDispatch } from 'react-redux'
 
-export const LoginForm = () => {
+export const LoginForm = (props) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginButtonDisabled, setLoginButtonDisabled] = useState(true)
-  const history = useHistory()
   const errorMessage = useSelector(state => state.authenticationReducer.errorMessage)
   const dispatch = useDispatch()
   
@@ -28,7 +26,7 @@ export const LoginForm = () => {
 
   const submit = (event) => {
     event.preventDefault()
-    dispatch(login(email, password, history))
+    dispatch(login(email, password, props.history))
   }
 
   return (

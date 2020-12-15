@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { signup } from '../actions/userActions'
-import { useHistory } from "react-router"
 import { useSelector, useDispatch } from 'react-redux'
 
-export const SignupForm = () => {
+export const SignupForm = (props) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
   const [signupButtonDisabled, setSignupButtonDisabled] = useState(true)
-  const history = useHistory()
   const errorMessage = useSelector(state => state.authenticationReducer.errorMessage)
   const dispatch = useDispatch()
 
@@ -32,7 +30,7 @@ export const SignupForm = () => {
 
   const submit = (event) => {
     event.preventDefault()
-    dispatch(signup(email, password, firstname, lastname, history))
+    dispatch(signup(email, password, firstname, lastname, props.history))
   }
 
   return (
