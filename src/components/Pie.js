@@ -1,13 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-const Pie = ({
-  pieData = {
-    title: '',
-    pieces: [],
-    chunks: []
-  }
-}) => {
+const Pie = (props) => {
+
+    const pieData = props.pieData
 
     const fillChunk = (id) => pieData.chunks.includes(id) ? true : false
     
