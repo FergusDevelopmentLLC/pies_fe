@@ -1,13 +1,11 @@
 import React, { useState } from "react"
 import { createPie } from '../actions/pieActions'
-import { useHistory } from "react-router"
 import { useSelector, useDispatch } from 'react-redux'
 
-export const PieForm = () => {
+export const PieForm = (props) => {
 
   const user = useSelector(state => state.authenticationReducer.user)
   const dispatch = useDispatch()
-  const history = useHistory()
 
   const [pie, setPie] = useState({
     title: '',
@@ -43,7 +41,7 @@ export const PieForm = () => {
     else {
       pie.user_id = user.id
       dispatch(createPie(pie))
-      history.push('/pies')
+      props.history.push('/pies')
     }
   }
 
