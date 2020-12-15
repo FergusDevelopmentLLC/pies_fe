@@ -18,7 +18,7 @@ const initialState = {
   isLoading: false
 }
 
-export default (state = initialState, action) => {
+const pieReducer = (state = initialState, action) => {
   switch(action.type) {
     
     case FETCH_PIE_REQUEST:
@@ -92,3 +92,4 @@ export default (state = initialState, action) => {
       return state
   }
 }
+export default pieReducer

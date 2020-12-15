@@ -16,7 +16,7 @@ const PieController = (props) => {
 
   useEffect(() => {
     dispatch(fetchPie(props.id))
-  },[props.id])
+  }, [dispatch, props.id])
   
   return (
     <div className='pie-container'>
