@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const PieGallery = (props) => {
   
-  const pies = props.pies
+  const { pies } = props
   
   return (
     <>
