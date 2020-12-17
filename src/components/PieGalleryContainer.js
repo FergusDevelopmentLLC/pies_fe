@@ -28,8 +28,8 @@ export class PieGalleryContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.authenticationReducer.user,
-  pies: state.authenticationReducer.user.pies
+  user: state.authenticationReducer.user ? state.authenticationReducer.user : {},
+  pies: state.authenticationReducer.user && state.authenticationReducer.user.pies ? state.authenticationReducer.user.pies : []
 })
 
 export default connect(mapStateToProps, { refreshUser })(PieGalleryContainer)
