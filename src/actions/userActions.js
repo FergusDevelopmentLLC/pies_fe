@@ -8,7 +8,7 @@ String.prototype.capitalize = function() {
 }
 
 export const login = (email, password, history) => {
-  
+
   return dispatch => {
 
     dispatch({ type: LOGIN_REQUEST, email })
@@ -112,6 +112,7 @@ export const refreshUser = (user) => {
           })
         }
         else {
+          //only pick up id, email, firstName, lastName, and token for user
           dispatch({
             type: CURRENT_USER_REFRESH_SUCCESS,
             payload: response.user
