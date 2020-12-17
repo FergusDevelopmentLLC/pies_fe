@@ -63,6 +63,7 @@ const pieReducer = (state = initialState, action) => {
     case CREATE_PIE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
         pie: action.payload
       }
     case CREATE_PIE_FAILURE:

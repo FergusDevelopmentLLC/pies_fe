@@ -2,7 +2,7 @@ import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_REQUEST, LOGIN_SU
 
 const initialState = {
   loggedIn: false,
-  loading: false,
+  isLoading: false,
   user: {}
 }
 
@@ -11,59 +11,62 @@ const authenticationReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return {
         ...state,
-        loading: true
+        loggedIn: false,
+        isLoading: true
       }
     case LOGIN_SUCCESS:
       return {
         loggedIn: true,
-        loading: false,
+        isLoading: false,
         user: action.payload
       }
     case LOGIN_FAILURE:
       return {
         loggedIn: false,
-        loading: false,
+        isLoading: false,
         errorMessage: action.error
       }
     case LOGOUT:
       return {
         loggedIn: false,
-        loading: false,
+        isLoading: false,
         user: {}
       }
     case SIGNUP_REQUEST:
       return {
         ...state,
-        loggedIn: true,
+        loggedIn: false,
+        isLoading: true
       }
     case SIGNUP_SUCCESS:
       return {
         loggedIn: true,
-        loading: false,
+        isLoading: false,
         user: action.payload
       }
     case SIGNUP_FAILURE:
       return {
-        loading: false,
         loggedIn: false,
+        isLoading: false,
         errorMessage: action.error
       }
     case CURRENT_USER_REFRESH_REQUEST:
       return {
         ...state,
-        loading: false
+        loggedIn: false,
+        isLoading: true
       }
     case CURRENT_USER_REFRESH_SUCCESS:
       return {
         loggedIn: true,
-        loading: false,
+        isLoading: false,
         user: action.payload
       }
     case CURRENT_USER_REFRESH_FAILURE:
       return {
         loggedIn: false,
-        loading: false,
-        errorMessage: action.error
+        isLoading: false,
+        errorMessage: action.payload
       }
     default:
       return state
