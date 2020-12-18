@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export const PieForm = (props) => {
 
-  const user = useSelector(state => state.authenticationReducer.user)
+  const currentUser = useSelector(state => state.authenticationReducer.user)
   const dispatch = useDispatch()
 
   const [pie, setPie] = useState({
@@ -39,9 +39,8 @@ export const PieForm = (props) => {
       alert('All fields are required')
     }
     else {
-      pie.user_id = user.id
-      dispatch(createPie(pie))
-      props.history.push('/pies')
+      dispatch(createPie(pie, currentUser, props.history))
+      // props.history.push('/pies')
     }
   }
 
