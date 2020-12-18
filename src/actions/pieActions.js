@@ -14,8 +14,11 @@ import {
 } from './types'
 
 import { URL_PREFIX } from './urlPrefix'
+import { refreshUser } from '../actions/userActions'
 
-export const createPie = (pie) => {
+export const createPie = (pie, user, history) => {
+
+  pie.user_id = user.id
 
   return dispatch => {
 
@@ -37,6 +40,9 @@ export const createPie = (pie) => {
           type: CREATE_PIE_SUCCESS,
           payload: pie
         })
+      })
+      .then(() => {
+        return dispatch(refreshUser(user, history))//https://github.com/reduxjs/redux/issues/1738
       })
       .catch((error) => {
         return dispatch({
@@ -74,8 +80,8 @@ export const fetchPie = (id) => {
 }
 
   
-export const updatePie = (pie) => {
-
+export const updatePie = (pie, user) => {
+  
   return dispatch => {
     
     dispatch({ type: UPDATE_PIE_REQUEST })
@@ -85,7 +91,7 @@ export const updatePie = (pie) => {
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify( { pie: pie } )
     }
-  
+
     fetch(`${ URL_PREFIX }/pies/${pie.id}`, options)
       .then(res => {
         if(res.ok) return res.json()
@@ -97,6 +103,9 @@ export const updatePie = (pie) => {
           payload: pie
         })
       })
+      .then(() => {
+        dispatch(refreshUser(user))//https://github.com/reduxjs/redux/issues/1738
+      })
       .catch((error) => {
         return dispatch({
           type: UPDATE_PIE_FAILURE,
@@ -106,7 +115,7 @@ export const updatePie = (pie) => {
   }
 }
 
-export const deletePie = (pie) => {
+export const deletePie = (pie, user, history) => {
 
   return dispatch => {
 
@@ -123,6 +132,9 @@ export const deletePie = (pie) => {
       })
       .then(() => {
         return dispatch({ type: DELETE_PIE_SUCCESS })
+      })
+      .then(() => {
+        return dispatch(refreshUser(user, history))//https://github.com/reduxjs/redux/issues/1738
       })
       .catch((error) => {
         return dispatch({
