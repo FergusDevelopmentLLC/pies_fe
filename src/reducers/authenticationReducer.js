@@ -1,4 +1,14 @@
-import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CURRENT_USER_REFRESH_REQUEST, CURRENT_USER_REFRESH_FAILURE, CURRENT_USER_REFRESH_SUCCESS, LOGOUT } from '../actions/types';
+import { 
+          SIGNUP_REQUEST, 
+          SIGNUP_SUCCESS, 
+          SIGNUP_FAILURE, 
+          LOGIN_REQUEST, 
+          LOGIN_SUCCESS, 
+          LOGIN_FAILURE, 
+          CURRENT_USER_REFRESH_REQUEST, 
+          CURRENT_USER_REFRESH_FAILURE, 
+          CURRENT_USER_REFRESH_SUCCESS }
+          from '../actions/types';
 
 const initialState = {
   loggedIn: false,
@@ -26,12 +36,6 @@ const authenticationReducer = (state = initialState, action) => {
         isLoading: false,
         errorMessage: action.error
       }
-    case LOGOUT:
-      return {
-        loggedIn: false,
-        isLoading: false,
-        user: {}
-      }
     case SIGNUP_REQUEST:
       return {
         ...state,
@@ -53,11 +57,11 @@ const authenticationReducer = (state = initialState, action) => {
     case CURRENT_USER_REFRESH_REQUEST:
       return {
         ...state,
-        loggedIn: false,
         isLoading: true
       }
     case CURRENT_USER_REFRESH_SUCCESS:
       return {
+        ...state,
         loggedIn: true,
         isLoading: false,
         user: action.payload
