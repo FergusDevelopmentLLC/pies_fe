@@ -6,6 +6,7 @@ import { useSelector, useDispatch} from 'react-redux'
 const Navigation = () => {
   
   const loggedIn = useSelector(state => state.authenticationReducer.loggedIn)
+  const isLoading = useSelector(state => state.authenticationReducer.isLoading)
   const user = useSelector(state => state.authenticationReducer.user)
   const dispatch = useDispatch()
 
