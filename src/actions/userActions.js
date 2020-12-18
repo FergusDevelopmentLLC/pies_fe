@@ -1,4 +1,13 @@
-import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CURRENT_USER_REFRESH_REQUEST, CURRENT_USER_REFRESH_FAILURE, CURRENT_USER_REFRESH_SUCCESS, LOGOUT } from './types'
+import {  SIGNUP_REQUEST, 
+          SIGNUP_SUCCESS,
+          SIGNUP_FAILURE, 
+          LOGIN_REQUEST, 
+          LOGIN_SUCCESS, 
+          LOGIN_FAILURE, 
+          CURRENT_USER_REFRESH_REQUEST, 
+          CURRENT_USER_REFRESH_FAILURE, 
+          CURRENT_USER_REFRESH_SUCCESS 
+        } from './types'
 import { URL_PREFIX } from './urlPrefix'
 import getErrorMessage from '../_helpers/errorHelper'
 
@@ -11,7 +20,7 @@ export const login = (email, password, history) => {
 
   return dispatch => {
 
-    dispatch({ type: LOGIN_REQUEST, email })
+    dispatch({ type: LOGIN_REQUEST })
 
     const requestOptions = {
       method: 'POST',
@@ -49,14 +58,14 @@ export const login = (email, password, history) => {
 }
 
 export const logout = () => {
-  return { type: LOGOUT }
+  return { type: 'CLEAR_DATA' }
 }
 
 export const signup = (email, password, firstname, lastname, history) => {
   
   return dispatch => {
 
-    dispatch({ type: SIGNUP_REQUEST, email })
+    dispatch({ type: SIGNUP_REQUEST })
 
     const requestOptions = {
       method: 'POST',
@@ -91,11 +100,11 @@ export const signup = (email, password, firstname, lastname, history) => {
     }
 }
 
-export const refreshUser = (user) => {
+export const refreshUser = (user, history) => {
 
   return dispatch => {
-
-    dispatch({ type: CURRENT_USER_REFRESH_REQUEST, email: user.email })
+    
+    dispatch({ type: CURRENT_USER_REFRESH_REQUEST })
 
     const requestOptions = {
       method: 'GET',
@@ -106,18 +115,21 @@ export const refreshUser = (user) => {
       .then(response => response.json())
       .then(response => {
         if(response.error || response.errors) {
-          dispatch({ 
+          return dispatch({ 
             type: CURRENT_USER_REFRESH_FAILURE,
             error: getErrorMessage(response)
           })
         }
         else {
-          //only pick up id, email, firstName, lastName, and token for user
-          dispatch({
+          return dispatch({
             type: CURRENT_USER_REFRESH_SUCCESS,
             payload: response.user
           })
         }
+      })
+      .then(() => {
+        if(history)
+          history.push("/pies")
       })
       .catch((error) => {
         dispatch({ 
