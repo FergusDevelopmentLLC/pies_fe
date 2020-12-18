@@ -3,33 +3,37 @@ import { connect } from 'react-redux'
 import { refreshUser } from '../actions/userActions'
 import PieGallery from './PieGallery'
 
+// pies: this.props.pies
+
 export class PieGalleryContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: this.props.user,
-      pies: this.props.pies
+      user: this.props.user
     }
   }
 
-  componentDidMount() {
-    this.props.refreshUser(this.props.user)
+  getPies() {
+    if(this.state.user && this.state.user.pies && this.state.user.pies.length > 0) {
+      return <PieGallery pies={this.state.user.pies} />
+    }
+    else return null
   }
 
   render() {
     return (
       <>
         <h1>My Pies</h1>
-        {this.props.pies.length > 0 ? null : 'No pies yet. Click New Pie to create a pie.'}
-        <PieGallery pies={this.props.pies} />
+        { (this.state.user && this.state.user.pies && this.state.user.pies.length > 0) ? null : 'No pies yet. Click New Pie to create a pie.'}
+        { this.getPies() }
       </>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  user: state.authenticationReducer.user ? state.authenticationReducer.user : {},
-  pies: state.authenticationReducer.user && state.authenticationReducer.user.pies ? state.authenticationReducer.user.pies : []
+  user: state.authenticationReducer.user,
+  isLoading: state.authenticationReducer.isLoading
 })
 
 export default connect(mapStateToProps, { refreshUser })(PieGalleryContainer)
