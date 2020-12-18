@@ -10,6 +10,7 @@ const PieController = (props) => {
 
   const dispatch = useDispatch()
   const pie = useSelector(state => state.pieReducer.pie)
+  const currentUser = useSelector(state => state.authenticationReducer.user)
   
   const getPieComponent = () => Object.keys(pie).length > 0 ? <Pie pieData={ pie } /> : null
   const getPieControls = () => Object.keys(pie).length > 0 ? <PieControls pieData={ pie } /> : null
@@ -23,8 +24,7 @@ const PieController = (props) => {
       { getPieComponent() }
       { getPieControls() }
       <div className="delete-pie-wrapper"><button onClick={ () => {
-        dispatch(deletePie(pie))
-        props.history.push("/pies")
+        dispatch(deletePie(pie, currentUser, props.history))
       } }>Delete Pie</button></div>
       
     </div>
