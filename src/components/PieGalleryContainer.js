@@ -15,7 +15,8 @@ export class PieGalleryContainer extends Component {
 
   getPies() {
     if(this.state.user && this.state.user.pies && this.state.user.pies.length > 0) {
-      return <PieGallery pies={this.state.user.pies} />
+      const sorted = this.state.user.pies.map(pie => pie).sort((a, b) => (a.created_at > b.created_at) ? 1 : -1)
+      return <PieGallery pies={ sorted } />
     }
     else return null
   }
