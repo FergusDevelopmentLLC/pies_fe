@@ -9,7 +9,7 @@ export const PieForm = (props) => {
 
   const [pie, setPie] = useState({
     title: '',
-    pieces: ['Goal 1', 'Goal 2', 'Goal 3', 'Goal 4', 'Goal 5', 'Goal 6', 'Goal 7', 'Goal 8']
+    pieces: ['HR contacts', 'Dev contacts', 'Git commits', 'Blog post', 'Self Dev', 'Family', 'Exercise/Health', 'Rest']
   })
 
   const setTitle = (event) => {
