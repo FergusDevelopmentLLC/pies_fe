@@ -8,7 +8,7 @@ const Pie = (props) => {
     const fillChunk = (id) => pieData.chunks.includes(id) ? true : false
     
     return (
-      <svg viewBox="0 0 600 600">
+      <svg viewBox="-50 0 700 600">
       
         <g transform="translate(0,300)">
     
