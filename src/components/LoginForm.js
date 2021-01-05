@@ -8,11 +8,12 @@ export const LoginForm = (props) => {
   const [password, setPassword] = useState('')
   const [loginButtonDisabled, setLoginButtonDisabled] = useState(true)
   const errorMessage = useSelector(state => state.authenticationReducer.errorMessage)
+  const isLoading = useSelector(state => state.authenticationReducer.isLoading)
   const dispatch = useDispatch()
   
   useEffect(() => {
     setLoginButtonDisabled(!(email && password))
-  }, [email, password])
+  }, [email, password, isLoading])
 
   const handleChange = (event) => {
     
@@ -32,6 +33,7 @@ export const LoginForm = (props) => {
   return (
     <div>
       <h1>Log in</h1>
+      <div className={ isLoading ? 'loading' : ''}></div>
       <div className="error">{ errorMessage }</div>
       <form className='form'>
         <label htmlFor='email'>Email</label>
