@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { refreshUser } from '../actions/userActions'
 import PieGallery from './PieGallery'
 
-// pies: this.props.pies
-
 export class PieGalleryContainer extends Component {
   constructor(props) {
     super(props)
